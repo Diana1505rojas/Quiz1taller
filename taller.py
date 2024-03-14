@@ -167,6 +167,16 @@ class SistemaGestionImplantes:
         self.__implantes = []
         self.__pacientes = []
 
+# la class sistemagestionimplantes  es un singleton porque tiene un constructor privado y  se accede a ella mediante el metodo get
+
+    def agregar_implante(self, implante):
+            self.__implantes.append(implante)
+
+    def eliminar_implante(self, index):
+        if index < len(self.__implantes):
+            del self.__implantes[index]
+
+
 
 
     
