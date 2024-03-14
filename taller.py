@@ -160,6 +160,13 @@ class Paciente:
         return self.__implantes_asociados
     
 # los getters  y setter son metodos que permiten manipular las propiedades privadas de una clase
+    
+
+class SistemaGestionImplantes:
+    def __init__(self):
+        self.__implantes = []
+        self.__pacientes = []
+
 
 
     
