@@ -12,10 +12,12 @@ class ImplanteMedico:
 
     def __str__(self):
         return f"Tipo: {self.__tipo}\nMaterial: {self.__material}\nTamaño: {self.__tamaño}\nFecha de Implante: {self.__fecha_implantacion}\nMédico Responsable: {self.__medico_responsable}\nEstado: {self.__estado}"
+#   se sobreescribe el metodo str para imprimir en pantalla un objeto de la clase ImplanteMedico
 
     def get_tipo(self):
         return self.__tipo
-
+# se definen los getters y se   establecen las reglas de acceso a los atributos privados del objeto
+# se defines los setters para  poder asignarle valores a esos atributos privados desde fuera de la clase
     def get_material(self):
         return self.__material
 
@@ -39,3 +41,28 @@ class ImplanteMedico:
 
     def set_estado(self, estado):
         self.__estado = estado
+
+# se define una funcion que permite agregar un nuevo implante al sistema
+
+# se creo la clase de marcapasos               
+class Marcapasos(ImplanteMedico):
+    def __init__(self, material, tamaño, electrodos, alambrico, frecuencia_estimulacion):
+        super().__init__("Marcapasos", material, tamaño)
+        self.__electrodos = electrodos
+        self.__alambrico = alambrico
+        self.__frecuencia_estimulacion = frecuencia_estimulacion
+
+    def __str__(self):
+        return f"{super().__str__()}\nElectrodos: {self.__electrodos}\nAlambrico: {self.__alambrico}\nFrecuencia de Estimulación: {self.__frecuencia_estimulacion}"
+
+    def get_electrodos(self):
+        return self.__electrodos
+
+    def get_alambrico(self):
+        return self.__alambrico
+
+    def get_frecuencia_estimulacion(self):
+        return self.__frecuencia_estimulacion
+    
+# los gettters  y setter de marcapasos heredan de ImplanteMedico
+    # por lo tanto no es necesario  volver a definirlos en esta clase
