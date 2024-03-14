@@ -117,6 +117,20 @@ class ImplanteRodilla(ImplanteMedico):
 
     def get_tipo_fijacion(self):
         return self.__tipo_fijacion
+    
+    # el def__init__  es igual al de la clase padre con la diferencia de que se le agrega un tercer parametro
+
+class ProtesisCadera(ImplanteMedico):
+    def __init__(self, material, tamaño, tipo_fijacion):
+        super().__init__("Prótesis de Cadera", material, tamaño)
+        self.__tipo_fijacion = tipo_fijacion
+
+    def __str__(self):
+        return f"{super().__str__()}\nTipo de Fijación: {self.__tipo_fijacion}"
+
+    def get_tipo_fijacion(self):
+        return self.__tipo_fijacion
+
 
     
 
