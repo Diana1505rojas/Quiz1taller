@@ -242,6 +242,20 @@ class SistemaGestionImplantes:
         else:
             print("Número de paciente inválido.")   
 
+    def mostrar_seguimiento_implantes(self):
+        print("Seguimiento de Implantes:")
+        for paciente in self.__pacientes:
+            print(f"Paciente: {paciente.get_nombre()}")
+            for implante in paciente.get_implantes_asociados():
+                print(f"Implante: {implante.get_tipo()}, Fecha de Implantación: {implante.get_fecha_implantacion()}, Médico: {implante.get_medico_responsable()}, Estado: {implante.get_estado()}")
+
+    #Se crearon los menus paras poder acceder a las clases y poder realizar las acciones
+                    #se tiene primero el mdenu principal
+
+if __name__ == "__main__":
+        sistema_implantes = SistemaGestionImplantes()
+
+
 
 
 
