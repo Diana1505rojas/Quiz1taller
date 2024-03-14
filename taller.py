@@ -170,7 +170,7 @@ class SistemaGestionImplantes:
 # la class sistemagestionimplantes  es un singleton porque tiene un constructor privado y  se accede a ella mediante el metodo get
 
     def agregar_implante(self, implante):
-            self.__implantes.append(implante)
+        self.__implantes.append(implante)
 
     def eliminar_implante(self, index):
         if index < len(self.__implantes):
@@ -178,39 +178,39 @@ class SistemaGestionImplantes:
 
 
     def editar_implante(self, index):
-            if index < len(self.__implantes):
-                implante = self.__implantes[index]
-                print("Información actual del implante:")
-                print(implante)
-                material = input("Ingrese el nuevo material: ")
-                tamaño = input("Ingrese el nuevo tamaño: ")
+        if index < len(self.__implantes):
+            implante = self.__implantes[index]
+            print("Información actual del implante:")
+            print(implante)
+            material = input("Ingrese el nuevo material: ")
+            tamaño = input("Ingrese el nuevo tamaño: ")
 
                 # Editar los atributos específicos según el tipo de implante
-                if isinstance(implante, Marcapasos):
-                    electrodos = int(input("Ingrese el nuevo número de electrodos: "))
-                    alambrico = input("¿Es alámbrico? (s/n): ").lower() == "s"
-                    frecuencia_estimulacion = input("Ingrese la nueva frecuencia de estimulación: ")
-                    self.__implantes[index] = Marcapasos(material, tamaño, electrodos, alambrico, frecuencia_estimulacion)
-                elif isinstance(implante, StentCoronario):
+            if isinstance(implante, Marcapasos):
+                electrodos = int(input("Ingrese el nuevo número de electrodos: "))
+                alambrico = input("¿Es alámbrico? (s/n): ").lower() == "s"
+                frecuencia_estimulacion = input("Ingrese la nueva frecuencia de estimulación: ")
+                self.__implantes[index] = Marcapasos(material, tamaño, electrodos, alambrico, frecuencia_estimulacion)
+            elif isinstance(implante, StentCoronario):
                     longitud = input("Ingrese la nueva longitud: ")
                     diametro = input("Ingrese el nuevo diámetro: ")
                     self.__implantes[index] = StentCoronario(material, tamaño, longitud, diametro)
-                elif isinstance(implante, ImplanteDental):
+            elif isinstance(implante, ImplanteDental):
                     forma = input("Ingrese la nueva forma: ")
                     sistema_fijacion = input("Ingrese el nuevo sistema de fijación: ")
                     self.__implantes[index] = ImplanteDental(material, tamaño, forma, sistema_fijacion)
-                elif isinstance(implante, ImplanteRodilla):
+            elif isinstance(implante, ImplanteRodilla):
                     tipo_fijacion = input("Ingrese el nuevo tipo de fijación: ")
                     self.__implantes[index] = ImplanteRodilla(material, tamaño, tipo_fijacion)
-                elif isinstance(implante, ProtesisCadera):
+            elif isinstance(implante, ProtesisCadera):
                     tipo_fijacion = input("Ingrese el nuevo tipo de fijación: ")
                     self.__implantes[index] = ProtesisCadera(material, tamaño, tipo_fijacion)
-                else:
+            else:
                     # Si no es un tipo específico conocido, simplemente actualiza material y tamaño
                     self.__implantes[index].__material = material
                     self.__implantes[index].__tamaño = tamaño
-                print("Implante editado con éxito.")
-            else:
+            print("Implante editado con éxito.")
+        else:
                 print("Número de implante inválido.")
 
     def visualizar_inventario(self):
@@ -253,7 +253,20 @@ class SistemaGestionImplantes:
                     #se tiene primero el mdenu principal
 
 if __name__ == "__main__":
-        sistema_implantes = SistemaGestionImplantes()
+    sistema_implantes = SistemaGestionImplantes()
+
+    while True:
+        print("----- Menú -----")
+        print("1. Agregar implante")
+        print("2. Eliminar implante")
+        print("3. Editar información de implante")
+        print("4. Visualizar inventario de implantes")
+        print("5. Registrar paciente")
+        print("6. Asignar implante a paciente")
+        print("7. Mostrar seguimiento de implantes")
+        print("8. Salir")
+
+        opcion = input("Ingrese el número de la opción deseada: ")
 
 
 
