@@ -281,6 +281,42 @@ if __name__ == "__main__":
             print("4. Implante de Rodilla")
             print("5. Prótesis de Cadera")
 
+#el siguiente es para poder realizar las opciones del menu anterior
+            tipo_implante = input("Seleccione el tipo de implante: ")
+            if tipo_implante == "1":
+                material = input("Ingrese el material del marcapasos: ")
+                tamaño = input("Ingrese el tamaño del marcapasos: ")
+                electrodos = int(input("Ingrese el número de electrodos: "))
+                alambrico = input("¿Es alámbrico? (s/n): ").lower() == "s"
+                frecuencia_estimulacion = input("Ingrese la frecuencia de estimulación: ")
+                implante = Marcapasos(material, tamaño, electrodos, alambrico, frecuencia_estimulacion)
+            elif tipo_implante == "2":
+                material = input("Ingrese el material del stent coronario: ")
+                tamaño = input("Ingrese el tamaño del stent coronario: ")
+                longitud = input("Ingrese la longitud del stent coronario: ")
+                diametro = input("Ingrese el diámetro del stent coronario: ")
+                implante = StentCoronario(material, tamaño, longitud, diametro)
+            elif tipo_implante == "3":
+                material = input("Ingrese el material del implante dental: ")
+                tamaño = input("Ingrese el tamaño del implante dental: ")
+                forma = input("Ingrese la forma del implante dental: ")
+                sistema_fijacion = input("Ingrese el sistema de fijación del implante dental: ")
+                implante = ImplanteDental(material, tamaño, forma, sistema_fijacion)
+            elif tipo_implante == "4":
+                material = input("Ingrese el material del implante de rodilla: ")
+                tamaño = input("Ingrese el tamaño del implante de rodilla: ")
+                tipo_fijacion = input("Ingrese el tipo de fijación del implante de rodilla: ")
+                implante = ImplanteRodilla(material, tamaño, tipo_fijacion)
+            elif tipo_implante == "5":
+                material = input("Ingrese el material de la prótesis de cadera: ")
+                tamaño = input("Ingrese el tamaño de la prótesis de cadera: ")
+                tipo_fijacion = input("Ingrese el tipo de fijación de la prótesis de cadera: ")
+                implante = ProtesisCadera(material, tamaño, tipo_fijacion)
+            else:
+                print("Opción inválida. Intente de nuevo.")
+                continue
+            sistema_implantes.agregar_implante(implante)
+            print("Implante agregado con éxito.")
 
 
 
