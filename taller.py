@@ -1,4 +1,4 @@
-#Diana Sofia Rojas-Mateo R3strepo Hincapie
+#Diana Sofia Rojas-Mateo Restrepo Hincapie
 from datetime import datetime
 #se creo la clas implante medico con los atributos geenrales que tendran todos los implantes
 class ImplanteMedico:
@@ -175,6 +175,43 @@ class SistemaGestionImplantes:
     def eliminar_implante(self, index):
         if index < len(self.__implantes):
             del self.__implantes[index]
+
+
+def editar_implante(self, index):
+        if index < len(self.__implantes):
+            implante = self.__implantes[index]
+            print("Información actual del implante:")
+            print(implante)
+            material = input("Ingrese el nuevo material: ")
+            tamaño = input("Ingrese el nuevo tamaño: ")
+            
+            # Editar los atributos específicos según el tipo de implante
+            if isinstance(implante, Marcapasos):
+                electrodos = int(input("Ingrese el nuevo número de electrodos: "))
+                alambrico = input("¿Es alámbrico? (s/n): ").lower() == "s"
+                frecuencia_estimulacion = input("Ingrese la nueva frecuencia de estimulación: ")
+                self.__implantes[index] = Marcapasos(material, tamaño, electrodos, alambrico, frecuencia_estimulacion)
+            elif isinstance(implante, StentCoronario):
+                longitud = input("Ingrese la nueva longitud: ")
+                diametro = input("Ingrese el nuevo diámetro: ")
+                self.__implantes[index] = StentCoronario(material, tamaño, longitud, diametro)
+            elif isinstance(implante, ImplanteDental):
+                forma = input("Ingrese la nueva forma: ")
+                sistema_fijacion = input("Ingrese el nuevo sistema de fijación: ")
+                self.__implantes[index] = ImplanteDental(material, tamaño, forma, sistema_fijacion)
+            elif isinstance(implante, ImplanteRodilla):
+                tipo_fijacion = input("Ingrese el nuevo tipo de fijación: ")
+                self.__implantes[index] = ImplanteRodilla(material, tamaño, tipo_fijacion)
+            elif isinstance(implante, ProtesisCadera):
+                tipo_fijacion = input("Ingrese el nuevo tipo de fijación: ")
+                self.__implantes[index] = ProtesisCadera(material, tamaño, tipo_fijacion)
+            else:
+                # Si no es un tipo específico conocido, simplemente actualiza material y tamaño
+                self.__implantes[index].__material = material
+                self.__implantes[index].__tamaño = tamaño
+            print("Implante editado con éxito.")
+        else:
+            print("Número de implante inválido.")
 
 
 
