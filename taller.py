@@ -268,6 +268,19 @@ if __name__ == "__main__":
 
         opcion = input("Ingrese el número de la opción deseada: ")
 
+#se creo otro menu para poder seleccionar el tipo de implante 
+#el codigo funciona de la manera que primero se agrega un implante y se pueden agregar mas, ya despues se
+# puede agregar un paciente y una vez agregado el paciente podemos agregarle un implante al paciente
+#nos aparecera la lista de los pacientes guardados y una vez se seleccione el paciente nos aparecera la lista de 
+#los implantes guardados y ya al seleccionar el implante este se guardara con el paciente que se selecciono.
+        if opcion == "1":
+            print("Tipos de implante:")
+            print("1. Marcapasos")
+            print("2. Stent Coronario")
+            print("3. Implante Dental")
+            print("4. Implante de Rodilla")
+            print("5. Prótesis de Cadera")
+
 
 
 
