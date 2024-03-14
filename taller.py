@@ -318,6 +318,37 @@ if __name__ == "__main__":
             sistema_implantes.agregar_implante(implante)
             print("Implante agregado con éxito.")
 
+ #Para poder elimininar un implante
+        elif opcion == "2":
+            print("Implantes disponibles para eliminar:")
+            sistema_implantes.visualizar_inventario()
+            index = int(input("Ingrese el número del implante que desea eliminar: ")) - 1
+            sistema_implantes.eliminar_implante(index)
+            print("Implante eliminado con éxito.")
+        elif opcion == "3":
+            print("Implantes disponibles para editar:")
+            sistema_implantes.visualizar_inventario()
+            index = int(input("Ingrese el número del implante que desea editar: ")) - 1
+            sistema_implantes.editar_implante(index)
+        elif opcion == "4":
+            sistema_implantes.visualizar_inventario()
+        elif opcion == "5":
+            nombre = input("Ingrese el nombre del paciente: ")
+            id_paciente = input("Ingrese el ID del paciente: ")
+            paciente = Paciente(nombre, id_paciente)
+            sistema_implantes.registrar_paciente(paciente)
+            print("Paciente registrado con éxito.")
+        elif opcion == "6":
+            sistema_implantes.asignar_implante_a_paciente()
+        elif opcion == "7":
+            sistema_implantes.mostrar_seguimiento_implantes()
+        elif opcion == "8":
+            print("¡Hasta luego!")
+            break
+        else:
+            print("Opción inválida. Por favor, ingrese un número válido.")
+
+
 
 
 
