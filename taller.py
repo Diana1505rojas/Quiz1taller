@@ -82,6 +82,31 @@ class Marcapasos(ImplanteMedico):
     def get_diametro(self):
         return self.__diametro
     
-# 
+
+# la clase de implante dental  tiene como padre a la clase de Implantable
+class ImplanteDental(ImplanteMedico):
+    def __init__(self, material, tamaño, forma, sistema_fijacion):
+        super().__init__("Implante Dental", material, tamaño)
+        self.__forma = forma
+        self.__sistema_fijacion = sistema_fijacion
+
+# se utiliza el metodo str de la clase padre para mostrar los atributos comunes a ambas clases
+    def __str__(self):
+        return f"{super().__str__()}\nForma: {self.__forma}\nSistema de Fijación: {self.__sistema_fijacion}"
+
+    def get_forma(self):
+        return self.__forma
+
+    def get_sistema_fijacion(self):
+        return self.__sistema_fijacion
+
+# la clase EsmalteDental hereda de la clase ImplanteDental pero sobreescribe al método __str__
+# para que muestre información adicional especifica de ella
+    
+
+
+
+    
+
 
 
