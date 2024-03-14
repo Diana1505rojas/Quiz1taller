@@ -104,7 +104,19 @@ class ImplanteDental(ImplanteMedico):
 # para que muestre información adicional especifica de ella
     
 
+ 
+class ImplanteRodilla(ImplanteMedico):
+    def __init__(self, material, tamaño, tipo_fijacion):
+        super().__init__("Implante de Rodilla", material, tamaño)
+        self.__tipo_fijacion = tipo_fijacion
 
+# se llama al método __str__ de la clase padre y se le agregan  los atributos nuevos  de esta clase
+
+    def __str__(self):
+        return f"{super().__str__()}\nTipo de Fijación: {self.__tipo_fijacion}"
+
+    def get_tipo_fijacion(self):
+        return self.__tipo_fijacion
 
     
 
