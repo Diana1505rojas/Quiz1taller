@@ -68,6 +68,7 @@ class Marcapasos(ImplanteMedico):
     # por lo tanto no es necesario  volver a definirlos en esta clase
 
 # la clase  Stentcoronario  en  hereda tambien de ImplanteMedico pero con la adicionalidad de tener atributos propios
+class StentCoronario(ImplanteMedico):
     def __init__(self, material, tamaño, longitud, diametro):
         super().__init__("Stent Coronario", material, tamaño)
         self.__longitud = longitud
