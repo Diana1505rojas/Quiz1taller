@@ -66,3 +66,22 @@ class Marcapasos(ImplanteMedico):
     
 # los gettters  y setter de marcapasos heredan de ImplanteMedico
     # por lo tanto no es necesario  volver a definirlos en esta clase
+
+# la clase  Stentcoronario  en  hereda tambien de ImplanteMedico pero con la adicionalidad de tener atributos propios
+    def __init__(self, material, tamaño, longitud, diametro):
+        super().__init__("Stent Coronario", material, tamaño)
+        self.__longitud = longitud
+        self.__diametro = diametro
+
+    def __str__(self):
+        return f"{super().__str__()}\nLongitud: {self.__longitud}\nDiámetro: {self.__diametro}"
+
+    def get_longitud(self):
+        return self.__longitud
+
+    def get_diametro(self):
+        return self.__diametro
+    
+# 
+
+
