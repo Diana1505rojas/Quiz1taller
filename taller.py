@@ -177,41 +177,70 @@ class SistemaGestionImplantes:
             del self.__implantes[index]
 
 
-def editar_implante(self, index):
-        if index < len(self.__implantes):
-            implante = self.__implantes[index]
-            print("Información actual del implante:")
-            print(implante)
-            material = input("Ingrese el nuevo material: ")
-            tamaño = input("Ingrese el nuevo tamaño: ")
-            
-            # Editar los atributos específicos según el tipo de implante
-            if isinstance(implante, Marcapasos):
-                electrodos = int(input("Ingrese el nuevo número de electrodos: "))
-                alambrico = input("¿Es alámbrico? (s/n): ").lower() == "s"
-                frecuencia_estimulacion = input("Ingrese la nueva frecuencia de estimulación: ")
-                self.__implantes[index] = Marcapasos(material, tamaño, electrodos, alambrico, frecuencia_estimulacion)
-            elif isinstance(implante, StentCoronario):
-                longitud = input("Ingrese la nueva longitud: ")
-                diametro = input("Ingrese el nuevo diámetro: ")
-                self.__implantes[index] = StentCoronario(material, tamaño, longitud, diametro)
-            elif isinstance(implante, ImplanteDental):
-                forma = input("Ingrese la nueva forma: ")
-                sistema_fijacion = input("Ingrese el nuevo sistema de fijación: ")
-                self.__implantes[index] = ImplanteDental(material, tamaño, forma, sistema_fijacion)
-            elif isinstance(implante, ImplanteRodilla):
-                tipo_fijacion = input("Ingrese el nuevo tipo de fijación: ")
-                self.__implantes[index] = ImplanteRodilla(material, tamaño, tipo_fijacion)
-            elif isinstance(implante, ProtesisCadera):
-                tipo_fijacion = input("Ingrese el nuevo tipo de fijación: ")
-                self.__implantes[index] = ProtesisCadera(material, tamaño, tipo_fijacion)
+    def editar_implante(self, index):
+            if index < len(self.__implantes):
+                implante = self.__implantes[index]
+                print("Información actual del implante:")
+                print(implante)
+                material = input("Ingrese el nuevo material: ")
+                tamaño = input("Ingrese el nuevo tamaño: ")
+
+                # Editar los atributos específicos según el tipo de implante
+                if isinstance(implante, Marcapasos):
+                    electrodos = int(input("Ingrese el nuevo número de electrodos: "))
+                    alambrico = input("¿Es alámbrico? (s/n): ").lower() == "s"
+                    frecuencia_estimulacion = input("Ingrese la nueva frecuencia de estimulación: ")
+                    self.__implantes[index] = Marcapasos(material, tamaño, electrodos, alambrico, frecuencia_estimulacion)
+                elif isinstance(implante, StentCoronario):
+                    longitud = input("Ingrese la nueva longitud: ")
+                    diametro = input("Ingrese el nuevo diámetro: ")
+                    self.__implantes[index] = StentCoronario(material, tamaño, longitud, diametro)
+                elif isinstance(implante, ImplanteDental):
+                    forma = input("Ingrese la nueva forma: ")
+                    sistema_fijacion = input("Ingrese el nuevo sistema de fijación: ")
+                    self.__implantes[index] = ImplanteDental(material, tamaño, forma, sistema_fijacion)
+                elif isinstance(implante, ImplanteRodilla):
+                    tipo_fijacion = input("Ingrese el nuevo tipo de fijación: ")
+                    self.__implantes[index] = ImplanteRodilla(material, tamaño, tipo_fijacion)
+                elif isinstance(implante, ProtesisCadera):
+                    tipo_fijacion = input("Ingrese el nuevo tipo de fijación: ")
+                    self.__implantes[index] = ProtesisCadera(material, tamaño, tipo_fijacion)
+                else:
+                    # Si no es un tipo específico conocido, simplemente actualiza material y tamaño
+                    self.__implantes[index].__material = material
+                    self.__implantes[index].__tamaño = tamaño
+                print("Implante editado con éxito.")
             else:
-                # Si no es un tipo específico conocido, simplemente actualiza material y tamaño
-                self.__implantes[index].__material = material
-                self.__implantes[index].__tamaño = tamaño
-            print("Implante editado con éxito.")
+                print("Número de implante inválido.")
+
+    def visualizar_inventario(self):
+        for i, implante in enumerate(self.__implantes, 1):
+            print(f"{i}. {implante}")
+
+    def registrar_paciente(self, paciente):
+        self.__pacientes.append(paciente)
+
+    def asignar_implante_a_paciente(self):
+        print("Pacientes registrados:")
+        for i, paciente in enumerate(self.__pacientes, 1):
+            print(f"{i}. {paciente}")
+        paciente_index = int(input("Seleccione el número del paciente: ")) - 1
+        if paciente_index < len(self.__pacientes):
+            paciente = self.__pacientes[paciente_index]
+            print("Implantes disponibles para asignar:")
+            self.visualizar_inventario()
+            implante_index = int(input("Seleccione el número del implante a asignar: ")) - 1
+            if implante_index < len(self.__implantes):
+                implante = self.__implantes[implante_index]
+                fecha_implantacion = datetime.now().strftime("%Y-%m-%d")
+                medico_responsable = input("Ingrese el médico responsable: ")
+                estado = input("Ingrese el estado del implante (activo/inactivo): ")
+                paciente.asignar_implante(implante, fecha_implantacion, medico_responsable, estado)
+                print("Implante asignado con éxito.")
+            else:
+                print("Número de implante inválido.")
         else:
-            print("Número de implante inválido.")
+            print("Número de paciente inválido.")   
 
 
 
