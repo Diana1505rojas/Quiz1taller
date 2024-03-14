@@ -130,6 +130,36 @@ class ProtesisCadera(ImplanteMedico):
 
     def get_tipo_fijacion(self):
         return self.__tipo_fijacion
+    
+# la class paciente  tiene todos los metodos de la clase PacienteMedico mas uno nuevo llamado mostrar_implantes
+class Paciente:
+    def __init__(self, nombre, id_paciente):
+        self.__nombre = nombre
+        self.__id_paciente = id_paciente
+        self.__implantes_asociados = []
+
+    def asignar_implante(self, implante, fecha_implantacion, medico_responsable, estado):
+        implante.set_fecha_implantacion(fecha_implantacion)
+        implante.set_medico_responsable(medico_responsable)
+        implante.set_estado(estado)
+        self.__implantes_asociados.append(implante)
+
+# def asignar implante esta bien porque  no hay conflicto entre las funciones del mismo nombre en las clases hijas
+
+    def __str__(self):
+        implantes = "\n".join([f"- {implante.get_tipo()}" for implante in self.__implantes_asociados])
+        return f"Nombre: {self.__nombre}\nID: {self.__id_paciente}\nImplantes asociados:\n{implantes}"
+
+    def get_nombre(self):
+        return self.__nombre
+
+    def get_id_paciente(self):
+        return self.__id_paciente
+
+    def get_implantes_asociados(self):
+        return self.__implantes_asociados
+    
+# los getters  y setter son metodos que permiten manipular las propiedades privadas de una clase
 
 
     
